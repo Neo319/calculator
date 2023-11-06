@@ -21,8 +21,7 @@ let value = '';
 
 const buttons = document.getElementById("buttons");
 const digits = buttons.querySelectorAll(".digit"); 
-
-console.log(digits)
+console.log(digits);
 
 digits.forEach((button) => {
     button.addEventListener("click", () => {
@@ -30,6 +29,22 @@ digits.forEach((button) => {
         display.textContent = value;
     });
 });
+
+let valueOne;
+let operation;
+
+const operators = document.querySelectorAll(".operator")
+operators.forEach((button) => {
+    button.addEventListener("click", () => {
+        console.log (button.id);
+        valueOne = value;
+        value = 0;
+        operation = button.id;
+        console.log (`${valueOne} ${operation}`)
+
+    })
+});
+
 
 
 
