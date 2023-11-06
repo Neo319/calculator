@@ -16,7 +16,9 @@ function operate (x, operator, y) {
 
 
 let display = document.getElementById("display");
-display.textContent = "0.00"
+display.textContent = "0.00";
+let value = '';
+
 const buttons = document.getElementById("buttons");
 const digits = buttons.querySelectorAll(".digit"); 
 
@@ -24,7 +26,8 @@ console.log(digits)
 
 digits.forEach((button) => {
     button.addEventListener("click", () => {
-        display.textContent = button.id;
+        value += button.id;
+        display.textContent = value;
     });
 });
 
