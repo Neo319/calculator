@@ -14,3 +14,6 @@ function operate (x, operator, y) {
     else console.log('operator error');
 }
 
+
+const buttons = document.getElementById("buttons");
+console.log(buttons)
