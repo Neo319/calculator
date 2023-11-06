@@ -7,6 +7,9 @@ function divide (x, y) {return x / y};
 
 
 function operate (x, operator, y) {
+    console.log(x + operator + y)
+    x = parseInt(x);
+    y = parseInt(y);
     if (operator == "+") {return add (x, y)}
     else if (operator == "-") {return sub (x, y)}
     else if (operator == "*") {return mult (x, y)}
@@ -37,12 +40,21 @@ const operators = document.querySelectorAll(".operator")
 operators.forEach((button) => {
     button.addEventListener("click", () => {
         valueOne = value;
-        value = 0;
+        value = '';
         operation = button.id;
-        console.log (`${valueOne} ${operation}`)
+        console.log (`${valueOne} ${operation}`);
+        display.textContent = (`${valueOne} ${operation}`);
 
     })
 });
+
+const equals = document.getElementById("confirm")
+equals.addEventListener("click", () => {
+    result = operate (valueOne, operation, value)
+    console.log(result);
+    display.textContent = result;
+});
+
 
 
 
