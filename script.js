@@ -36,7 +36,6 @@ let operation;
 const operators = document.querySelectorAll(".operator")
 operators.forEach((button) => {
     button.addEventListener("click", () => {
-        console.log (button.id);
         valueOne = value;
         value = 0;
         operation = button.id;
