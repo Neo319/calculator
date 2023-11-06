@@ -54,7 +54,11 @@ operators.forEach((button) => {
         }
         //if operation is not empty: evaluate, store result, begin new operation
         else if (operation != '') {
-            console.log(`new operation! ${operation}`)
+            console.log(`new operation! ${valueOne + operation + value}`)
+            valueOne = operate(valueOne, operation, value);
+            value = '';
+            operation = button.id;
+            display.textContent = (`${valueOne} ${operation}`);
         };
 
         
@@ -71,7 +75,14 @@ equals.addEventListener("click", () => {
     operation = ''
 });
 
-
+const clear = document.getElementById("clear");
+clear.addEventListener("click", () => {
+    display.textContent = 0.00;
+    result = 0;
+    value ='';
+    valueOne = '';
+    operation = '';
+});
 
 
 
