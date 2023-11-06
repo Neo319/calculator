@@ -34,16 +34,30 @@ digits.forEach((button) => {
 });
 
 let valueOne;
-let operation;
+let operation = '';
+let result = 0;
 
 const operators = document.querySelectorAll(".operator")
 operators.forEach((button) => {
     button.addEventListener("click", () => {
-        valueOne = value;
-        value = '';
-        operation = button.id;
-        console.log (`${valueOne} ${operation}`);
-        display.textContent = (`${valueOne} ${operation}`);
+        // for each operator button,
+        // if operation is currently empty: store it
+        if (operation === '') {
+            // if value is empty, assume result (starts at zero)
+            if (value != '') valueOne = value
+            else valueOne = result;
+            
+            value = '';
+            operation = button.id;
+            console.log (`${valueOne} ${operation}`);
+            display.textContent = (`${valueOne} ${operation}`);
+        }
+        //if operation is not empty: evaluate, store result, begin new operation
+        else if (operation != '') {
+            console.log(`new operation! ${operation}`)
+        };
+
+        
 
     })
 });
@@ -53,6 +67,8 @@ equals.addEventListener("click", () => {
     result = operate (valueOne, operation, value)
     console.log(result);
     display.textContent = result;
+    value = '';
+    operation = ''
 });
 
 
