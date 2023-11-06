@@ -5,6 +5,12 @@ function sub (x, y) {return x - y};
 function mult (x, y) {return x * y};
 function divide (x, y) {return x / y};
 
-console.log(sub (100, 2))
-console.log (mult((sub (100, 2)), 2))
+
+function operate (x, operator, y) {
+    if (operator == "+") {return add (x, y)}
+    else if (operator == "-") {return sub (x, y)}
+    else if (operator == "*") {return mult (x, y)}
+    else if (operator == "/") {return divide (x, y)}
+    else console.log('operator error');
+}
 
