@@ -118,7 +118,12 @@ equals.addEventListener("click", () => {
         if (value != '') {result = value}
         else if (valueOne != '') {result = valueOne;}
         else if (value === '' && valueOne === '') {result = 0};
-    } else {
+
+    // no data, operator
+    } else if (valueOne === '' && operation != '' && value === '') {
+        console.log ("case 4");
+        result = 0;
+     } else {
         error();
         console.log(`empty: ${valueOne+operation+value}`);
     }
@@ -144,6 +149,7 @@ clear.addEventListener("click", () => {
 
 function error () {
     display.textContent = "ERROR";
+    console.log("error");
     result = '';
     value ='';
     valueOne = '';
