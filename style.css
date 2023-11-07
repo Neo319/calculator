@@ -1,6 +1,4 @@
-
-
-* {border: 1px solid blue;}
+* {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif}
 
 body {
     background-color: #999;
@@ -19,11 +17,16 @@ body {
     width: 80%;
     margin: 20px;
     padding: 20px;
+    
 }
 
 #display {
     background-color: #e6e6e6;
-    width: 30%;
+    width: 250px;
+    padding: 4px;
+    font-size: 30px;
+    display: flex;
+    text-align: center;
 
 
 }
@@ -31,17 +34,46 @@ body {
 button {
     height: 50px;
     width: 50px;
+    margin: 2px;
+
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
 }
 
 /* this is where I discovered that using ids such as "0" and "+" are a bad idea...  */
-.digit   {
-    color: red;
+#zero button {
+    width: 180px;
 }
 
 #buttons {
     display: flex;
     flex-flow: row wrap;
     max-width: 250px;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px;
+
+    justify-content: flex-end;
 }
+
+#digits button {
+    background-color: #408040;
+}
+
+#operators button {
+    background-color: darkorchid;
+}
+
+#specialButtons button {
+    background-color: darkorchid;
+}
+
+#operators {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+
 
 

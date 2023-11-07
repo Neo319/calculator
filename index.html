@@ -8,40 +8,47 @@
 </head>
 <body>
     <h1>Javascript Calculator</h1>
+    <h3><i>From <a href="https://www.theodinproject.com/paths/foundations/courses/foundations">
+         The Odin Project: Foundations</a></i></h3>
 
     <div id='container'>
     <div id="display"></div>
     <div id="buttons">
-        <div>
-            <button class = "digit" id="7"> 7 </button>
-            <button class = "digit" id="8"> 8 </button>
-            <button class = "digit" id="9"> 9 </button>
-        </div>
-        <div>
-            <button class = "digit" id="4"> 4 </button>
-            <button class = "digit" id="5"> 5 </button>
-            <button class = "digit" id="6"> 6 </button>
+        <div id="digits">
+            <div>
+                <button class = "digit" id="7"> 7 </button>
+                <button class = "digit" id="8"> 8 </button>
+                <button class = "digit" id="9"> 9 </button>
+            </div>
+            <div>
+                <button class = "digit" id="4"> 4 </button>
+                <button class = "digit" id="5"> 5 </button>
+                <button class = "digit" id="6"> 6 </button>
 
-        </div>
-        <div>
-            <button class = "digit" id="1"> 1 </button>
-            <button class = "digit" id="2"> 2 </button>
-            <button class = "digit" id="3"> 3 </button>
+            </div>
+            <div>
+                <button class = "digit" id="1"> 1 </button>
+                <button class = "digit" id="2"> 2 </button>
+                <button class = "digit" id="3"> 3 </button>
 
+            </div>
+            <div id="zero">
+                <button class = "digit" id="0"> 0 </button>
+            </div>
         </div>
-        <div>
-            <button class = "digit" id="0"> 0 </button>
-        </div>
-        <div>
+        
+            <div id="operators">
             <button class = "operator" id="+"> + </button> 
             <button class = "operator" id="-"> - </button> 
             <button class = "operator" id="*"> * </button> 
             <button class = "operator" id="/"> / </button> 
+            </div>
+            <div id="specialButtons">
+            <button id="confirm"> = </button>
+            <button id="clear"> cc </button>
         </div>
-        <button id="confirm"> = </button>
-        <button id="clear"> cc </button>
-    </div>
-</div>
+    </div> 
+</div> By Alex Nevins <a href="https://github.com/Neo319/"> (Github) </a>
 
     <script src = "script.js"></script>
 </body>
