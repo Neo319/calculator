@@ -28,14 +28,19 @@ console.log(digits);
 
 digits.forEach((button) => {
     button.addEventListener("click", () => {
+        if (resetValueFlag) {
+            value = ''
+            resetValueFlag = false;
+        };
         value += button.id;
         display.textContent = value;
     });
 });
 
-let valueOne;
+let valueOne = '';
 let operation = '';
 let result = 0;
+let resetValueFlag = false; 
 
 const operators = document.querySelectorAll(".operator")
 operators.forEach((button) => {
@@ -57,8 +62,10 @@ operators.forEach((button) => {
         //if operation is not empty: evaluate, store result, begin new operation
         else if (operation != '' && value != '') {
             console.log(`new operation! ${valueOne + operation + value}`)
-            valueOne = operate(valueOne, operation, value);
-            value = '';
+            // valueOne = operate(valueOne, operation, value);
+
+            // value = '';
+            resetValueFlag = true;
             operation = button.id;
             display.textContent = (`${valueOne} ${operation}`);
         }
@@ -75,21 +82,61 @@ operators.forEach((button) => {
 
 const equals = document.getElementById("confirm")
 equals.addEventListener("click", () => {
-    result = operate (valueOne, operation, value)
-    console.log(result);
 
-    if (typeof parseInt(result) != "number" || result === Infinity || result === -Infinity) {error();
+     // division by zero
+    if (operation === '/' && value === "0") {
+        display.textContent = "You can't do that, silly!!";
+        result = '';
+        value ='';
+        valueOne = '';
+        operation = '';
+    }
+    
+
+    // standard: all values entered (value is persistent until digit is pressed)
+    if (valueOne != '' && operation != '' && value != '') {
+        console.log("case 1");
+        result = operate (valueOne, operation, value);
+        console.log(result);
+        valueOne = result;
+    
+
+    // or, only one value entered (value becomes valueOne, value is persistent)
+    } else if (valueOne != '' && operation != '' && value === '') {
+        console.log("case 2");
+        value = valueOne; // only difference
+
+        result = operate (valueOne, operation, value);
+        console.log(result);
+        valueOne = result;
+
+
+
+    // or, no operator (no operation should happen)
+    } else if (operation === '') {
+        console.log ("case 3");
+        if (value != '') {result = value}
+        else if (valueOne != '') {result = valueOne;}
+        else if (value === '' && valueOne === '') {result = 0};
     } else {
+        error();
+        console.log(`empty: ${valueOne+operation+value}`);
+    }
+
+    if (result === "NaN" || result === '' || result === Infinity || result === -Infinity) {error();
+    } else {}
     display.textContent = result;
-    value = '';
-    operation = ''
-};
+    // value = '';
+    resetValueFlag = true;
+    result = ''
+
+
 });
 
 const clear = document.getElementById("clear");
 clear.addEventListener("click", () => {
-    display.textContent = 0.00;
-    result = 0;
+    display.textContent = '0.00';
+    result = '';
     value ='';
     valueOne = '';
     operation = '';
@@ -97,7 +144,7 @@ clear.addEventListener("click", () => {
 
 function error () {
     display.textContent = "ERROR";
-    result = 0;
+    result = '';
     value ='';
     valueOne = '';
     operation = '';
